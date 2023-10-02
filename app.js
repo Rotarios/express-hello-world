@@ -1,13 +1,23 @@
-const express = require("express");
+import express from "express"
+import bot from "./bot.js"
+import { webhookCallback } from "grammy";
+
+
 const app = express();
 const port = process.env.PORT || 3001;
+
+const secretPath = String(process.env.BOT_TOKEN);
+
+
+app.use(express.json());
+app.use(`/${secretPath}`, webhookCallback(bot, "express"));
 
 app.get("/", (req, res) => res.type('html').send(html));
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
+//server.keepAliveTimeout = 120 * 1000;
+//server.headersTimeout = 120 * 1000;
 
 const html = `
 <!DOCTYPE html>
