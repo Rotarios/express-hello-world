@@ -1,4 +1,4 @@
-import { validate } from "npm:bitcoin-address-validation@^2.2.3"
+import { validate } from "bitcoin-address-validation"
 
 export const getAddressFromMessage = (message) => {
 
