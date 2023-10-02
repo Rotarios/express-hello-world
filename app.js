@@ -1,7 +1,10 @@
 import express from "express"
 import { bot } from "./bot.js"
 import { webhookCallback } from "grammy";
+import { initWS } from "./initWS.js";
 
+const wsPool = {}
+initWS(wsPool, bot)
 
 const app = express();
 const port = process.env.PORT || 3001;
