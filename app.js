@@ -1,5 +1,5 @@
 import express from "express"
-import bot from "./bot.js"
+import { bot } from "./bot.js"
 import { webhookCallback } from "grammy";
 
 
