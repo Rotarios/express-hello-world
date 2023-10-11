@@ -1,5 +1,5 @@
 import { dbQueries } from "./dbInterface.js"
-//import { bot } from "./bot.js"
+import { bot } from "./bot.js"
 
 export const notifyWalletSubscribers = async (walletAddress, text) => {
 	//console.log(walletAddress, text)
