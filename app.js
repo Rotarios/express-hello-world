@@ -1,10 +1,9 @@
 import express from "express"
 import { bot } from "./bot.js"
 import { webhookCallback } from "grammy";
-import { initWS } from "./initWS.js";
+import { initWsPool } from "./initWsPool.js";
 
-const wsPool = {}
-initWS(wsPool, bot)
+initWsPool()
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -13,6 +12,7 @@ const secretPath = String(process.env.BOT_TOKEN);
 
 
 app.use(express.json());
+
 app.use(`/${secretPath}`, webhookCallback(bot, "express"));
 
 app.get("/", (req, res) => res.type('html').send(html));
