@@ -136,7 +136,7 @@ export const deleteChatWallet = async (chatId, walletAddress) => {
 		dbQueries.deleteChat(chatId)
 	}
 	deleteWalletIfUnused(walletAddress)
-	notifyChatId(chatId, "удалено, кошелек ${walletAddress} больше не отслеживается")//"deleted, wallet ${walletAddress} is not being tracked now") 
+	notifyChatId(chatId, `удалено, кошелек ${walletAddress} больше не отслеживается`)//"deleted, wallet ${walletAddress} is not being tracked now") 
 }
 
 export const toggleWallet = async (chatId, walletAddress) => {
