@@ -98,7 +98,10 @@ export const listAllChatWallets = async (chatId) => {
 	const wallets = await dbQueries.getWalletsByChat(chatId)
 	if (wallets.length > 0) {
 		wallets.forEach((wallet) => {
-			const text = statusText(wallet.wallet_address, wallet.balance, wallet.mempool_in, wallet.mempool_out)
+			const balance = parseFloat(wallet.balance)
+			const mempoolIn = parseFloat(wallet.mempool_in)
+			const mempoolOut = parseFloat(wallet.mempool_out)
+			const text = statusText(wallet.wallet_address, balance, mempoolIn, mempoolOut)
 			//	`wallet: ${wallet.wallet_address}` +
 			//	"\n" + `balance: ${wallet.balance}` + 
 			//	"\n" + `incoming mempool transactions sum: ${wallet.mempool_in}` +
