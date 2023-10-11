@@ -1,5 +1,5 @@
 import { Bot } from "grammy";
-import { dbQueries } from "./dbinterface.js"
+import { dbQueries } from "./dbInterface.js"
 import { toggleWallet, listAllChatWallets, deleteAllChatWallets, showWalletListenersStatus } from "./broker.js"
 import { getAddressFromMessage } from "./getAddressFromMessage.js"
 
