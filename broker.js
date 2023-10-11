@@ -66,7 +66,7 @@ export const createWalletListener = (walletAddress) => {
 			Object.assign(conversions, res.conversions)
 			//console.log("conversions arrived"+"\n"+res)
 		}				
-		if (res[address-transactions] || res[block-transactions]) {
+		if (res["address-transactions"] || res["block-transactions"]) {
 			const { balance, mempoolIn, mempoolOut } = await getActualBalance(walletAddress)
 			await dbQueries.updateWalletBalance(walletAddress, balance, mempoolIn, mempoolOut)
 			const text = statusText(walletAddress, balance, mempoolIn, mempoolOut)
