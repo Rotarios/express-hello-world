@@ -142,7 +142,6 @@ export const deleteChatWallet = async (chatId, walletAddress) => {
 export const toggleWallet = async (chatId, walletAddress) => {
 	const [ junction ] = await dbQueries.getChatJunction(chatId, walletAddress)
 	if (!junction) {
-		dbQueries.addJunction(chatId, walletAddress)
 		const [ wallet ] = await dbQueries.getWallet(walletAddress)
 		if (!wallet) {
 			createWalletListener(walletAddress)
@@ -165,8 +164,9 @@ export const toggleWallet = async (chatId, walletAddress) => {
 		}
 		const [ chat ] = await dbQueries.getChat(chatId)
 		if (!chat) {
-			dbQueries.addChat(chatId)
+			await dbQueries.addChat(chatId)
 		}
+		dbQueries.addJunction(chatId, walletAddress)
 	} else {
 		deleteChatWallet(chatId, walletAddress)
 	}
