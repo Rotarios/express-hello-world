@@ -31,6 +31,10 @@ bot.command("deleteall", async (ctx) => {
 	deleteAllChatWallets(chatId)
 });
 
+bot.command("checkws", (ctx) => {
+	showWalletListenersStatus()
+})
+
 bot.on("message", async (ctx) => {
   // `txt` will be a `string` when processing text messages.
   // It will be `undefined` if the received message does not have any message text,
@@ -50,7 +54,3 @@ bot.on("message", async (ctx) => {
 		else await bot.api.sendMessage(chatId, "адрес в сообщении не найден")//"there is no address found in the message")
   
 });
-
-bot.command("checkws", (ctx) => {
-	showWalletListenersStatus()
-})

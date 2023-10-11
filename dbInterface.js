@@ -88,7 +88,7 @@ export const dbQueries = {
 	
 	deleteJunction: async (chatId, walletAddress) => {
 		const result = await pool.query(
-			"DELETE FROM junction WHERE chat_id = $1, wallet_address = $2 RETURNING *", 
+			"DELETE FROM junction WHERE chat_id = $1 AND wallet_address = $2 RETURNING *", 
 			[chatId, walletAddress]
 		)
 		return result

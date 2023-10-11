@@ -12,5 +12,5 @@ export const notifyWalletSubscribers = async (walletAddress, text) => {
 
 export const notifyChatId = async (chatId, text) => {
 	await bot.api.sendMessage(chatId, text)
-	//console.log(chat.chat_id + "\n" + text)
+	//console.log(chatId + "\n" + text)
 }
