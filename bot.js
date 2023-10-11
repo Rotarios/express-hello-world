@@ -1,6 +1,6 @@
 import { Bot } from "grammy";
 import { dbQueries } from "./dbInterface.js"
-import { toggleWallet, listAllChatWallets, deleteAllChatWallets, showWalletListenersStatus } from "./broker.js"
+import { toggleWallet, listAllChatWallets, deleteAllChatWallets, showWalletListenersStatus, toggleLogging } from "./broker.js"
 import { getAddressFromMessage } from "./getAddressFromMessage.js"
 
 const token = process.env.BOT_TOKEN;
@@ -34,6 +34,11 @@ bot.command("deleteall", async (ctx) => {
 bot.command("checkws", (ctx) => {
 	showWalletListenersStatus()
 })
+
+bot.command("togglelogging", (ctx) => {
+	toggleLogging()
+})
+
 
 bot.on("message", async (ctx) => {
   // `txt` will be a `string` when processing text messages.
