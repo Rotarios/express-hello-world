@@ -83,7 +83,7 @@ export const createWalletListener = (walletAddress) => {
 	wsPool[walletAddress] = ws
 }
 
-export const deleteWalletListener = (walletAddress) => {
+export const deleteWalletListener = async (walletAddress) => {
 	await wsPool[walletAddress].close()
 	delete wsPool[walletAddress]
 }
