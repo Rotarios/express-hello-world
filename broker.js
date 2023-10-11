@@ -44,6 +44,7 @@ export const createWalletListener = (walletAddress) => {
 	})
 	ws.on("message", async (data) => {
 		const res = JSON.parse(data.toString());
+		console.log(res)
 		//const chats = await dbQueries.getChatsByWallet(walletAddress)		
 		if (res["address-transactions"]) {
 			res["address-transactions"].forEach((el) => {
@@ -83,7 +84,7 @@ export const createWalletListener = (walletAddress) => {
 }
 
 export const deleteWalletListener = (walletAddress) => {
-	wsPool[walletAddress].close()
+	await wsPool[walletAddress].close()
 	delete wsPool[walletAddress]
 }
 
