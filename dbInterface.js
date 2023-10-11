@@ -151,7 +151,7 @@ export const dbQueries = {
 	
 	getChatWalletJunction: async (chatId, walletAddress) => {
 		const { rows } = await pool.query(
-			"SELECT * FROM junction WHERE chat_id = $1, wallet_address = $2 RETURNING *", 
+			"SELECT * FROM junction WHERE chat_id = $1 AND wallet_address = $2 RETURNING *", 
 			[chatId, walletAddress]
 		)
 		return rows
