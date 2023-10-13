@@ -159,19 +159,27 @@ export const toggleWallet = async (chatId, walletAddress) => {
 			const { balance, mempoolIn, mempoolOut } = await getActualBalance(walletAddress)
 			dbQueries.updateWalletBalance(walletAddress, balance, mempoolIn, mempoolOut)
 			const text = statusText(walletAddress, balance, mempoolIn, mempoolOut)
-			console.log(walletAddress, balance, mempoolIn, mempoolOut)
+			
+			//console.log(walletAddress, balance, mempoolIn, mempoolOut)
+			
 			//	`wallet: ${walletAddress}` 
 			//	"\n" + `balance: ${balance}` + 
 			//	"\n" + `incoming mempool transactions sum: ${mempoolIn}` +
 			//	"\n" + `outcoming mempool transactions sum: ${mempoolOut}`
 			notifyChatId(chatId, text)
 		} else {
-			const text = statusText(wallet.wallet_address, wallet.balance, wallet.mempool_in, wallet.mempool_out)
-			console.log(wallet.wallet_address, wallet.balance, wallet.mempool_in, wallet.mempool_out)
+			const balance = parseFloat(wallet.balance)
+			const mempoolIn = parseFloat(wallet.mempool_in)
+			const mempoolOut = parseFloat(wallet.mempool_out)
+			const text = statusText(wallet.wallet_address, balance, mempoolIn, mempoolOut)
+			
+			//console.log(wallet.wallet_address, wallet.balance, wallet.mempool_in, wallet.mempool_out)
+			
 			//	`wallet: ${walletAddress}` +
 			//	"\n" + `balance: ${wallet.balance}` + 
 			//	"\n" + `incoming mempool transactions sum: ${wallet.mempool_in}` +
 			//	"\n" + `outcoming mempool transactions sum: ${wallet.mempool_out}`
+			
 			notifyChatId(chatId, text)
 		}
 		const [ chat ] = await dbQueries.getChat(chatId)
