@@ -166,6 +166,7 @@ export const toggleWallet = async (chatId, walletAddress) => {
 			notifyChatId(chatId, text)
 		} else {
 			const text = statusText(wallet.wallet_address, wallet.balance, wallet.mempool_in, wallet.mempool_out)
+			console.log(wallet.wallet_address, wallet.balance, wallet.mempool_in, wallet.mempool_out)
 			//	`wallet: ${walletAddress}` +
 			//	"\n" + `balance: ${wallet.balance}` + 
 			//	"\n" + `incoming mempool transactions sum: ${wallet.mempool_in}` +
