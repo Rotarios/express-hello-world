@@ -159,6 +159,7 @@ export const toggleWallet = async (chatId, walletAddress) => {
 			const { balance, mempoolIn, mempoolOut } = await getActualBalance(walletAddress)
 			dbQueries.updateWalletBalance(walletAddress, balance, mempoolIn, mempoolOut)
 			const text = statusText(walletAddress, balance, mempoolIn, mempoolOut)
+			console.log(walletAddress, balance, mempoolIn, mempoolOut)
 			//	`wallet: ${walletAddress}` 
 			//	"\n" + `balance: ${balance}` + 
 			//	"\n" + `incoming mempool transactions sum: ${mempoolIn}` +
